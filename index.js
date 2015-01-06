@@ -15,6 +15,10 @@ var rebaseUrls = function(css, options) {
             if (isAbsolute(url) && validator.isURL(url)) {
                 return url;
             }
+            // ignore local absolute url
+            if(url.indexOf('/') == 0){
+                return url;
+            }
             var absolutePath = path.join(options.currentDir, url)
             var p = path.relative(options.root, absolutePath);
 
